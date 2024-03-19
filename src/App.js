@@ -7,8 +7,29 @@ function App() {
   const [age, setAge] = useState('');
   const [recommendations, setRecommendations] = useState('');
   const [feedback, setFeedback] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async () => {
+
+    // Input validation
+    if (!weight || !height || !age) {
+      setError('Please enter values for weight, height, and age.');
+      return;
+    }
+    if (isNaN(weight) || isNaN(height) || isNaN(age)) {
+      setError('Please enter numeric values for weight, height, and age.');
+      return;
+    }
+    const ageInt = parseInt(age, 10);
+    if (ageInt < 6 || ageInt > 23) {
+      setError('This system only works for kids aged 6-23 months old.');
+      return;
+    }
+    // Clear previous error message
+    setError('');
+
+
+    // POST data to backend
     try {
       const response = await fetch('http://localhost:5000/process-data', {
         method: 'POST',
