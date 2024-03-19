@@ -1,0 +1,41 @@
+# Ignore dependency directories directory
+node_modules/
+jspm_packages/
+
+# Ignore any compiled files
+/build
+/.next
+/.nuxt
+/out
+/dist
+
+# Ignore environment variables file
+.env
+.env.local
+
+# Ignore log files
+logs
+*.log
+
+# Ignore Python virtual environment
+venv/
+*env/
+
+# Unit test / coverage reports
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Data files
+*.sqlite3 
+*.db
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
