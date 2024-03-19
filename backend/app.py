@@ -12,7 +12,7 @@ def calculate_calories():
     age_months = data['age']
     height_cm = data['height']
 
-    # Calculate caloric needs (replace with your actual calculation)
+    # Calculate caloric needs (replace with actual calculation)
     # ...
 
     return jsonify({'calories': calculated_calories})
