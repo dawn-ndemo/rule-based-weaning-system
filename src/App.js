@@ -55,7 +55,7 @@ function App() {
 
  return (
     <div className="container">
-      <h1>Child Nutrition Feedback System</h1>
+      <h1>Child Weaning Recommendations System</h1>
       <div className="form">
         <div className="input-group">
           <label>Weight (kg):</label>
@@ -74,12 +74,12 @@ function App() {
       </div>
       <div className="output">
         <div className="card">
+            <h2>Nutrition Feedback:</h2>
+            <p>{feedback}</p>
+          </div>
+        <div className="card">
           <h2>Food Recommendations:</h2>
           <p>{recommendations}</p>
-        </div>
-        <div className="card">
-          <h2>Nutrition Feedback:</h2>
-          <p>{feedback}</p>
         </div>
       </div>
     </div>

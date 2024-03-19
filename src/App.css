@@ -42,7 +42,7 @@ button {
 }
 
 .card {
-  width: calc(50% - 10px); /* Adjust width for tablets and larger devices */
+  width: calc(100%); /* Adjust width for tablets and larger devices */
   background-color: #f0f0f0;
   padding: 20px;
   margin-bottom: 20px;
@@ -65,6 +65,6 @@ button:hover {
   }
 
   .card {
-    width: 100%; /* Full width for mobile devices */
+    width: 80%; /* Width for mobile devices */
   }
 }
