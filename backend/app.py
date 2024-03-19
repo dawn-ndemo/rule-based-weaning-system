@@ -13,7 +13,7 @@ def process_data():
     data = request.json
     weight = data.get('weight')
     height = data.get('height')
-    age = data.get('age')
+    age = int(data.get('age'))
 
     if age < 6 or age > 23:
         return jsonify({'error': 'This system only works for kids aged 6-23 months old.'}), 400
