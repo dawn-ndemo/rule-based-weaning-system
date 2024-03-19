@@ -8,25 +8,28 @@ function App() {
   const [recommendations, setRecommendations] = useState('');
   const [feedback, setFeedback] = useState('');
 
-  const handleSubmit = () => {
-    // Validate input data
-    if (age < 6 || age > 23) {
-      alert('This system only works for kids aged 6-23 months old.');
-      return;
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch('/process-data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ weight, height, age })
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to process data');
+      }
+  
+      const responseData = await response.json();
+      setRecommendations(responseData.recommendations);
+      setFeedback(responseData.feedback);
+    } catch (error) {
+      console.error('Error processing data:', error.message);
+      // display error message to the user)
     }
-
-    // To insert here an API request to the Python backend to pass the weight, height, and age data
-    // Example:
-    // axios.post('/process-data', { weight, height, age })
-    //   .then(response => {
-    //     setRecommendations(response.data.recommendations);
-    //     setFeedback(response.data.feedback);
-    //   })
-    //   .catch(error => console.error('Error processing data:', error));
-
-    // to replace this after doing the API
-    setRecommendations('Sample food recommendations');
-    setFeedback('Sample nutrition feedback');
   };
 
   return (
