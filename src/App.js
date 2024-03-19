@@ -53,28 +53,34 @@ function App() {
     }
   };
 
-  return (
+ return (
     <div className="container">
-      <h1>Child Weaning Recommendations System</h1>
-      <div className="input-group">
-        <label>Weight (kg):</label>
-        <input type="number" value={weight} onChange={(e) => setWeight(e.target.value)} />
+      <h1>Child Nutrition Feedback System</h1>
+      <div className="form">
+        <div className="input-group">
+          <label>Weight (kg):</label>
+          <input type="number" value={weight} onChange={(e) => setWeight(e.target.value)} />
+        </div>
+        <div className="input-group">
+          <label>Height (cm):</label>
+          <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} />
+        </div>
+        <div className="input-group">
+          <label>Age (months):</label>
+          <input type="number" value={age} onChange={(e) => setAge(e.target.value)} />
+        </div>
+        {error && <div className="error">{error}</div>}
+        <button onClick={handleSubmit}>Submit</button>
       </div>
-      <div className="input-group">
-        <label>Height (cm):</label>
-        <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} />
-      </div>
-      <div className="input-group">
-        <label>Age (months):</label>
-        <input type="number" value={age} onChange={(e) => setAge(e.target.value)} />
-      </div>
-      {error && <div className="error">{error}</div>} {/* Display error message */}
-      <button onClick={handleSubmit}>Submit</button>
       <div className="output">
-        <h2>Food Recommendations:</h2>
-        <p>{recommendations}</p>
-        <h2>Nutrition Feedback:</h2>
-        <p>{feedback}</p>
+        <div className="card">
+          <h2>Food Recommendations:</h2>
+          <p>{recommendations}</p>
+        </div>
+        <div className="card">
+          <h2>Nutrition Feedback:</h2>
+          <p>{feedback}</p>
+        </div>
       </div>
     </div>
   );
