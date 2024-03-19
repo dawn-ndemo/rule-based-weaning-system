@@ -3,8 +3,10 @@
 # defines route for calculating caloric needs using Wt, Ht and age
 
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/process-data', methods=['POST'])
 def process_data():
