@@ -68,6 +68,7 @@ function App() {
         <label>Age (months):</label>
         <input type="number" value={age} onChange={(e) => setAge(e.target.value)} />
       </div>
+      {error && <div className="error">{error}</div>} {/* Display error message */}
       <button onClick={handleSubmit}>Submit</button>
       <div className="output">
         <h2>Food Recommendations:</h2>
