@@ -63,21 +63,3 @@ def calculate_weight_for_height_z_score(weight, height):
 if __name__ == '__main__':
     app.run(debug=True)
 
-
-
-def calculate_weight_for_age_z_score(weight, age):
-    z_score = 0  # Placeholder value, to replace with actual calculation
-    return z_score
-
-def calculate_height_for_age_z_score(height, age):
-    z_score = 0  # Placeholder value, to replace with actual calculation
-    return z_score
-
-def calculate_weight_for_height_z_score(weight, height):
-    z_score = 0  # Placeholder value, to replace with actual calculation
-    return z_score
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
