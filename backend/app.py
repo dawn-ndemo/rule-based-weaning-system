@@ -56,18 +56,16 @@ def process_with_expert_system(weight, height, age):
 
     # Provide nutrition feedback based on Z-scores
     feedback = ""
-    if age < 6:
-        feedback += "Exclusive breastfeeding is recommended for children below 6 months of age.\n"
-    feedback += "Nutritional status:\n"
-    feedback += f"Weight-for-age Z-score: {weight_for_age_z_score}\n"
-    feedback += f"Height-for-age Z-score: {height_for_age_z_score}\n"
-    feedback += f"Weight-for-height Z-score: {weight_for_height_z_score}\n"
+    feedback += "Nutritional status:<br>"
+    feedback += f"Weight-for-age Z-score: {weight_for_age_z_score}<br>"
+    feedback += f"Height-for-age Z-score: {height_for_age_z_score}<br>"
+    feedback += f"Weight-for-height Z-score: {weight_for_height_z_score}<br>"
     if weight_for_age_z_score < -2:
-        feedback += "The child is underweight.\n"
+        feedback += "The child is underweight.<br>"
     if height_for_age_z_score < -2:
-        feedback += "The child is stunted.\n"
+        feedback += "The child is stunted.<br>"
     if weight_for_height_z_score < -2:
-        feedback += "The child has wasting.\n"
+        feedback += "The child has wasting.<br>"
 
     # For demonstration purposes
     recommendations = 'Sample food recommendations'

@@ -78,7 +78,7 @@ function App() {
       <div className="output">
         <div className="card">
             <h2>Nutrition Feedback:</h2>
-            <p>{feedback}</p>
+            <div dangerouslySetInnerHTML={{ __html: feedback }} />
           </div>
         <div className="card">
           <h2>Food Recommendations:</h2>
