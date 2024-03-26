@@ -1,9 +1,6 @@
-# backend/app.py
-# defines my API routes
-# defines route for calculating caloric needs using Wt, Ht and age
-
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from rules import FeedingExpert # import the FeedingExpert class from rules.py
 
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:3000"], headers=['Content-Type']) 
