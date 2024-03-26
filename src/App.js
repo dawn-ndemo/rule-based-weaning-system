@@ -28,7 +28,6 @@ function App() {
     // Clear previous error message
     setError('');
 
-
     // POST data to backend
     try {
       const response = await fetch('http://localhost:5000/process-data', {
