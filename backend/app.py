@@ -24,10 +24,43 @@ def process_data():
     return jsonify({'recommendations': recommendations, 'feedback': feedback})
 
 def process_with_expert_system(weight, height, age):
-    # The expert system logic to go here...to replace this with the actual logic to generate food recommendations and feedback
+    # Calculate Z-scores for weight-for-age, height-for-age, and weight-for-height
+    weight_for_age_z_score = calculate_weight_for_age_z_score(weight, age)
+    height_for_age_z_score = calculate_height_for_age_z_score(height, age)
+    weight_for_height_z_score = calculate_weight_for_height_z_score(weight, height)
+
+    # Provide nutrition feedback based on Z-scores
+    feedback = ""
+    if age < 6:
+        feedback += "Exclusive breastfeeding is recommended for children below 6 months of age.\n"
+    feedback += "Nutritional status:\n"
+    feedback += f"Weight-for-age Z-score: {weight_for_age_z_score}\n"
+    feedback += f"Height-for-age Z-score: {height_for_age_z_score}\n"
+    feedback += f"Weight-for-height Z-score: {weight_for_height_z_score}\n"
+    if weight_for_age_z_score < -2:
+        feedback += "The child is underweight.\n"
+    if height_for_age_z_score < -2:
+        feedback += "The child is stunted.\n"
+    if weight_for_height_z_score < -2:
+        feedback += "The child has wasting.\n"
+
+    # For demonstration purposes
     recommendations = 'Sample food recommendations'
-    feedback = 'Sample nutrition feedback'
+
     return recommendations, feedback
+
+def calculate_weight_for_age_z_score(weight, age):
+    z_score = 0  # Placeholder value, to replace with actual calculation
+    return z_score
+
+def calculate_height_for_age_z_score(height, age):
+    z_score = 0  # Placeholder value, to replace with actual calculation
+    return z_score
+
+def calculate_weight_for_height_z_score(weight, height):
+    z_score = 0  # Placeholder value, to replace with actual calculation
+    return z_score
+
 
 if __name__ == '__main__':
     app.run(debug=True)
