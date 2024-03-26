@@ -23,7 +23,13 @@ class FeedingExpert(KnowledgeEngine):
         print("Frequency: 3-4 meals a day, 1-2 snacks")
         print("Amount: three quarters to full 250ml cup")
 
-engine = FeedingExpert()
-engine.reset()
-engine.declare(FeedingGuideline(age="6-8 months"))
-engine.run()
+    def get_recommendations(self, age_in_months):
+        self.reset()
+        if 6 <= age_in_months <= 8:
+            self.declare(FeedingGuideline(age="6-8 months"))
+        elif 9 <= age_in_months <= 11:
+            self.declare(FeedingGuideline(age="9-11 months"))
+        elif 12 <= age_in_months <= 23:
+            self.declare(FeedingGuideline(age="12-23 months"))
+        self.run()
+        return '\n'.join(self.facts) 
