@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from rules import FeedingExpert # import the FeedingExpert class from rules.py
+from rules import FeedingExpert
 
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:3000"], headers=['Content-Type']) 
@@ -15,12 +15,12 @@ def process_data():
     if age < 6 or age > 23:
         return jsonify({'error': 'This system only works for kids aged 6-23 months old.'}), 400
 
-    # to call the expert system logic to process the input data
-    recommendations, feedback = process_with_expert_system(weight, height, age)
+    # Create an instance of the FeedingExpert class
+    expert = FeedingExpert()
 
-    return jsonify({'recommendations': recommendations, 'feedback': feedback})
+    # Get recommendations from the expert system
+    recommendations = expert.get_recommendations(age)
 
-def process_with_expert_system(weight, height, age):
     # Calculate Z-scores for weight-for-age, height-for-age, and weight-for-height
     weight_for_age_z_score = calculate_weight_for_age_z_score(weight, age)
     height_for_age_z_score = calculate_height_for_age_z_score(height, age)
@@ -39,24 +39,24 @@ def process_with_expert_system(weight, height, age):
     if weight_for_height_z_score < -2:
         feedback += "The child has wasting.<br>"
 
-    # For demonstration purposes
-    recommendations = 'Sample food recommendations'
+    # Include recommendations from the expert system
+    feedback += "<br><b>Expert System Recommendations:</b><br>"
+    feedback += recommendations
 
-    return recommendations, feedback
+    return jsonify({'recommendations': recommendations, 'feedback': feedback})
 
+# Placeholder functions for calculating Z-scores --- considering not doing z-scores after all
 def calculate_weight_for_age_z_score(weight, age):
-    z_score = 0  # Placeholder value, to replace with actual calculation
+    z_score = 0  # Placeholder value
     return z_score
 
 def calculate_height_for_age_z_score(height, age):
-    z_score = 0  # Placeholder value, to replace with actual calculation
+    z_score = 0  # Placeholder value
     return z_score
 
 def calculate_weight_for_height_z_score(weight, height):
-    z_score = 0  # Placeholder value, to replace with actual calculation
+    z_score = 0  # Placeholder value
     return z_score
-
 
 if __name__ == '__main__':
     app.run(debug=True)
-
