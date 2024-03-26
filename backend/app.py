@@ -23,6 +23,31 @@ def process_data():
 
     return jsonify({'recommendations': recommendations, 'feedback': feedback})
 
+# backend/app.py
+# defines my API routes
+# defines route for calculating caloric needs using Wt, Ht and age
+
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app, origins=["http://localhost:3000"], headers=['Content-Type']) 
+
+@app.route('/process-data', methods=['POST'])
+def process_data():
+    data = request.json
+    weight = data.get('weight')
+    height = data.get('height')
+    age = int(data.get('age'))
+
+    if age < 6 or age > 23:
+        return jsonify({'error': 'This system only works for kids aged 6-23 months old.'}), 400
+
+    # to call the expert system logic to process the input data
+    recommendations, feedback = process_with_expert_system(weight, height, age)
+
+    return jsonify({'recommendations': recommendations, 'feedback': feedback})
+
 def process_with_expert_system(weight, height, age):
     # Calculate Z-scores for weight-for-age, height-for-age, and weight-for-height
     weight_for_age_z_score = calculate_weight_for_age_z_score(weight, age)
@@ -48,6 +73,24 @@ def process_with_expert_system(weight, height, age):
     recommendations = 'Sample food recommendations'
 
     return recommendations, feedback
+
+def calculate_weight_for_age_z_score(weight, age):
+    z_score = 0  # Placeholder value, to replace with actual calculation
+    return z_score
+
+def calculate_height_for_age_z_score(height, age):
+    z_score = 0  # Placeholder value, to replace with actual calculation
+    return z_score
+
+def calculate_weight_for_height_z_score(weight, height):
+    z_score = 0  # Placeholder value, to replace with actual calculation
+    return z_score
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
 
 def calculate_weight_for_age_z_score(weight, age):
     z_score = 0  # Placeholder value, to replace with actual calculation
