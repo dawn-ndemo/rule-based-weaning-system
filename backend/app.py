@@ -9,8 +9,8 @@ CORS(app, origins=["http://localhost:3000"], headers=['Content-Type'])
 def process_data():
     try:
         data = request.json
-        weight = data.get('weight')
-        height = data.get('height')
+        weight = int(data.get('weight'))
+        height = int(data.get('height'))
         age = int(data.get('age'))
 
         if age < 6 or age > 23:
