@@ -10,7 +10,6 @@ function App() {
   const [error, setError] = useState('');
 
   const handleSubmit = async () => {
-
     // Input validation
     if (!weight || !height || !age) {
       setError('Please enter values for weight, height, and age.');
@@ -21,8 +20,13 @@ function App() {
       return;
     }
     const ageInt = parseInt(age, 10);
+ 
     if (ageInt < 6 || ageInt > 23) {
-      setError('This system only works for kids aged 6-23 months old.');
+      if (ageInt < 6) {
+        setError('Exclusive breastfeeding is recommended for children below 6 months of age.');
+      }
+      else
+        setError('This system only works for kids aged 6-23 months old.');
       return;
     }
     // Clear previous error message
